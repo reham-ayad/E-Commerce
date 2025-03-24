@@ -1,0 +1,20 @@
+
+<section class="py-12 bg-gray-100">
+    <h2 class="text-black text-4xl font-bold mb-8">
+      Check out our featured categories
+    </h2>
+  
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 w-[90%] mx-auto">
+      @for (item of categoryList; track $index) {
+        <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:shadow-2xl">
+          <img [src]="item.image" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110" alt="">
+  
+          <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 
+                      transition-all duration-300 group-hover:opacity-100 group-hover:backdrop-blur-sm">
+            <h2 class="text-white font-bold text-xl uppercase tracking-wide">{{ item.name }}</h2>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+  
