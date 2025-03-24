@@ -5,11 +5,21 @@ import { authGuard } from './core/guard/auth.guard';
 import { checkTokenGuard } from './core/guard/checkToken/check-token.guard';
 import { CheckoutComponent } from './feature/pages/checkout/checkout.component';
 import { ProductDetailsComponent } from './feature/pages/product-details/product-details.component';
+import { CartComponent } from './feature/pages/cart/cart.component';
+import { CategoriesComponent } from './feature/pages/categories/categories.component';
+import { ResetPasswordComponent } from './feature/auth/reset-password/reset-password.component';
+import { title } from 'process';
+import { WishListComponent } from './feature/pages/wish-list/wish-list.component';
+import { ProductsComponent } from './feature/pages/products/products.component';
+import { BrandsComponent } from './feature/pages/brands/brands.component';
+import { HomeComponent } from './feature/pages/home/home.component';
+import { LoginComponent } from './feature/auth/login/login.component';
+import { SignupComponent } from './feature/auth/signup/signup.component';
 
 export const routes: Routes = [{path:'',component:AuthLayoutComponent,canActivate:[checkTokenGuard],children:[
-    {path:'login',loadComponent:()=>import('./feature/auth/login/login.component').then((c)=>c.LoginComponent)},
+    {path:'login',component:LoginComponent,title:"Login"},
 
-    {path:'signup',loadComponent:()=>import('./feature/auth/signup/signup.component').then((c)=>c.SignupComponent)},
+    {path:'signup',component:SignupComponent,title:"SignUp"},
 
 ]
 }
@@ -17,36 +27,34 @@ export const routes: Routes = [{path:'',component:AuthLayoutComponent,canActivat
 ,{path:'',component:MainLayoutComponent,children:[
     {path:' ',redirectTo:'home',pathMatch:'full' } ,
 
-    {path:'home',loadComponent:()=>import('./feature/pages/home/home.component').then((c)=>c.HomeComponent)},
+    {path:'home',component:HomeComponent,title:'Home'},
 
 
 
-    {path:'brands',loadComponent:()=>import('./feature/pages/brands/brands.component').then((c)=>c.BrandsComponent)},
+    {path:'brands',component:BrandsComponent,title:'Brands'},
 
 
 {path:'productDetails/:id',   data: { renderMode: 'default' } ,component:ProductDetailsComponent},
 
 
 
-    {path:'cart',canActivate:[authGuard],loadComponent:()=>import('./feature/pages/cart/cart.component').then((c)=>c.CartComponent)},
+    {path:'cart',canActivate:[authGuard],component:CartComponent,title:'Cart'},
 
-    {path:'allorders',canActivate:[authGuard],loadComponent:()=>import('./feature/pages/all-orders/all-orders.component').then((c)=>c.AllOrdersComponent)},
 
     {path:"checkout/:id",    data: { renderMode: 'default' } ,canActivate:[authGuard] ,component:CheckoutComponent},
 
 
-    {path:'categories',loadComponent:()=>import('./feature/pages/categories/categories.component').then((c)=>c.CategoriesComponent)},
+    {path:'categories',component:CategoriesComponent,title:'Categories'},
 
-    {path:'resetpassword',loadComponent:()=>import('./feature/auth/reset-password/reset-password.component').then((c)=>c.ResetPasswordComponent)},
+    {path:'resetpassword',component:ResetPasswordComponent,title:'ForgetPassword'},
 
 
-    {path:'notFound',loadComponent:()=>import('./feature/pages/not-found/not-found.component').then((c)=>c.NotFoundComponent)},
-    {path:'wish-list',canActivate:[authGuard],loadComponent:()=>import('./feature/pages/wish-list/wish-list.component').then((c)=>c.WishListComponent)},
+    {path:'wish-list',canActivate:[authGuard],component:WishListComponent,title:'WishList'},
 
 
     
 
-    {path:'products',loadComponent:()=>import('./feature/pages/products/products.component').then((c)=>c.ProductsComponent)},
+    {path:'products',component:ProductsComponent,title:'Products'},
 
 
     
