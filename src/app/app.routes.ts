@@ -25,9 +25,9 @@ export const routes: Routes = [{path:'',component:AuthLayoutComponent,canActivat
 }
 
 ,{path:'',component:MainLayoutComponent,children:[
-    {path:'',redirectTo:'/home',pathMatch:'full' } ,
+    {path:'',redirectTo:'brands',pathMatch:'full' } ,
 
-    {path:'/home',component:HomeComponent,title:'Home'},
+    {path:'home',component:HomeComponent,title:'Home'},
 
 
 
