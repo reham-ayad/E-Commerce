@@ -3,10 +3,10 @@ import{AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators}
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { error } from 'console';
 import { Router } from '@angular/router';
-import { NgIf } from '@angular/common';
+
 @Component({
   selector: 'app-signup',
-  imports: [ReactiveFormsModule,NgIf],
+  imports: [ReactiveFormsModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
