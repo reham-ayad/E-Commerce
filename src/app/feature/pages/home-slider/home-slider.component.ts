@@ -1,7 +1,9 @@
 import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-slider',
+  imports: [  RouterLink],
   templateUrl: './home-slider.component.html',
   styleUrl: './home-slider.component.scss',
 })

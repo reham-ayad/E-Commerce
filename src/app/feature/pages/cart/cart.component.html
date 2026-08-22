@@ -83,7 +83,7 @@
                   </span>
 
                   <button
-                    (click)="updateCart(item.product.id,item.count-1)"
+                    (click)="updateCart(item.product.id,item.count+1)"
                     type="button"
                   >
                     <i class="fa-solid fa-plus"></i>
@@ -105,7 +105,7 @@
 
                 <button
                   class="remove-btn"
-                  (click)="removeitem(item.product._id)"
+                  (click)="removeitem(item.product.id)"
                   type="button"
                   aria-label="Remove product"
                 >

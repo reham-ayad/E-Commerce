@@ -86,18 +86,22 @@ next:(res)=>{
   })
     
   }
+removeitem(productId: string) {
 
-removeitem(productId:string){
   this.wishlsit.removeProduct(productId).subscribe({
-    next:(res)=>{
-      this.totalPrice=res.data.totalwishlsitPrice;
-      this.wishList=res.data.products;
+    next: (res) => {
 
+      console.log('Remove Response:', res);
 
+      this.getwishlsitproducts();
+
+    },
+    error: (err) => {
+      console.error('Remove Error:', err);
     }
-  })
-}
+  });
 
+}
 
 
   ngOnInit(): void {
