@@ -1,21 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../core/services/products/products.service';
 import { Products } from '../../../shared/interface/products/products';
 import { CurrencyPipe } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../../core/services/cart/cart.service';
 
 @Component({
   selector: 'app-product-details',
   imports: [CurrencyPipe],
   templateUrl: './product-details.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent {
   id:any;
   productDetails!:Products;
-  constructor(private ActivatedRoute:ActivatedRoute,private product:ProductsService ,private cart:CartService, private toastr: ToastrService){
+  constructor(private ActivatedRoute:ActivatedRoute,private product:ProductsService ,private cart:CartService
+    // , private toastr: ToastrService
+  ){
     ActivatedRoute.params.subscribe(res=>{
       this.id=res['id'];
       console.log(this.id);
@@ -43,17 +46,17 @@ export class ProductDetailsComponent {
 
   addToCart(productId:string){
     this.cart.addProduct(productId).subscribe({
-      next:(res)=>{
-        this.toastr.success(res.message,'',{ 
-        closeButton:true,
-        progressBar:true,
-        progressAnimation:'increasing'
-      })
-      console.log(res.message);
-      this.cart.cartNumber.next(res.numOfCartItems);
+      // next:(res)=>{
+      //   this.toastr.success(res.message,'',{ 
+      //   closeButton:true,
+      //   progressBar:true,
+      //   progressAnimation:'increasing'
+      // })
+      // console.log(res.message);
+      // this.cart.cartNumber.next(res.numOfCartItems);
   
   
-      }
+      // }
     })
   }
 

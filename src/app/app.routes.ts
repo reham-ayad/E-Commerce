@@ -1,76 +1,143 @@
 import { Routes } from '@angular/router';
+
+// Layouts
 import { AuthLayoutComponent } from './feature/layout/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './feature/layout/main-layout/main-layout.component';
-import { authGuard } from './core/guard/auth.guard';
-import { checkTokenGuard } from './core/guard/checkToken/check-token.guard';
-import { CheckoutComponent } from './feature/pages/checkout/checkout.component';
-import { ProductDetailsComponent } from './feature/pages/product-details/product-details.component';
-import { CartComponent } from './feature/pages/cart/cart.component';
-import { CategoriesComponent } from './feature/pages/categories/categories.component';
-import { ResetPasswordComponent } from './feature/auth/reset-password/reset-password.component';
-import { title } from 'process';
-import { WishListComponent } from './feature/pages/wish-list/wish-list.component';
-import { ProductsComponent } from './feature/pages/products/products.component';
-import { BrandsComponent } from './feature/pages/brands/brands.component';
-import { HomeComponent } from './feature/pages/home/home.component';
+
+// Auth
 import { LoginComponent } from './feature/auth/login/login.component';
 import { SignupComponent } from './feature/auth/signup/signup.component';
+import { ResetPasswordComponent } from './feature/auth/reset-password/reset-password.component';
 
-export const routes: Routes = [{path:'',component:AuthLayoutComponent,canActivate:[checkTokenGuard],children:[
-    {path:'login',component:LoginComponent,title:"Login"},
+// Pages
+import { HomeComponent } from './feature/pages/home/home.component';
+import { ProductsComponent } from './feature/pages/products/products.component';
+import { CategoriesComponent } from './feature/pages/categories/categories.component';
+import { BrandsComponent } from './feature/pages/brands/brands.component';
+import { ProductDetailsComponent } from './feature/pages/product-details/product-details.component';
+import { CartComponent } from './feature/pages/cart/cart.component';
+import { WishListComponent } from './feature/pages/wish-list/wish-list.component';
+import { CheckoutComponent } from './feature/pages/checkout/checkout.component';
 
-    {path:'signup',component:SignupComponent,title:"SignUp"},
+// Guards
+import { authGuard } from './core/guard/auth.guard';
+import { checkTokenGuard } from './core/guard/checkToken/check-token.guard';
 
-]
-}
+export const routes: Routes = [
 
-,{path:'',component:MainLayoutComponent,children:[
-    {path:'',redirectTo:'brands',pathMatch:'full' } ,
+  // ========================================
+  // DEFAULT
+  // ========================================
 
-    {path:'home',component:HomeComponent,title:'Home'},
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
 
+  // ========================================
+  // AUTH
+  // ========================================
 
+  {
+    path: '',
+    component: AuthLayoutComponent,
+    children: [
 
-    {path:'brands',component:BrandsComponent,title:'Brands'},
+      {
+        path: 'login',
+        component: LoginComponent,
+        canActivate: [checkTokenGuard],
+        title: 'Login'
+      },
 
+      {
+        path: 'signup',
+        component: SignupComponent,
+        canActivate: [checkTokenGuard],
+        title: 'Sign Up'
+      },
 
-{path:'productDetails/:id',   data: { renderMode: 'default' } ,component:ProductDetailsComponent},
+      {
+        path: 'resetpassword',
+        component: ResetPasswordComponent,
+        canActivate: [checkTokenGuard],
+        title: 'Forget Password'
+      }
 
+    ]
+  },
 
+  // ========================================
+  // MAIN
+  // ========================================
 
-    {path:'cart',canActivate:[authGuard],component:CartComponent,title:'Cart'},
+  {
+    path: '',
+    component: MainLayoutComponent,
+    children: [
 
+      {
+        path: 'home',
+        component: HomeComponent,
+        title: 'Home'
+      },
 
-    {path:"checkout/:id",    data: { renderMode: 'default' } ,canActivate:[authGuard] ,component:CheckoutComponent},
+      {
+        path: 'products',
+        component: ProductsComponent,
+        title: 'Products'
+      },
 
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+        title: 'Categories'
+      },
 
-    {path:'categories',component:CategoriesComponent,title:'Categories'},
+      {
+        path: 'brands',
+        component: BrandsComponent,
+        title: 'Brands'
+      },
 
-    {path:'resetpassword',component:ResetPasswordComponent,title:'ForgetPassword'},
+      {
+        path: 'product-details/:id',
+        component: ProductDetailsComponent,
+        title: 'Product Details'
+      },
 
+      {
+        path: 'cart',
+        component: CartComponent,
+        canActivate: [authGuard],
+        title: 'Cart'
+      },
 
-    {path:'wish-list',canActivate:[authGuard],component:WishListComponent,title:'WishList'},
+      {
+        path: 'wish-list',
+        component: WishListComponent,
+        canActivate: [authGuard],
+        title: 'Wishlist'
+      },
 
+      {
+        path: 'checkout/:id',
+        component: CheckoutComponent,
+        canActivate: [authGuard],
+        title: 'Checkout'
+      }
 
-    
+    ]
+  },
 
-    {path:'products',component:ProductsComponent,title:'Products'},
+  // ========================================
+  // NOT FOUND
+  // ========================================
 
-
-    
-
-]}
-
-
-
-
-
-
-
-
-
-
-
+  {
+    path: '**',
+    redirectTo: 'home'
+  }
 
 ];
-

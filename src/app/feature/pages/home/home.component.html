@@ -1,12 +1,83 @@
+<main class="home-page">
 
-<app-home-slider></app-home-slider>
-<app-category-slider></app-category-slider>
+  <!-- Hero -->
+  <section class="hero-section">
+    <app-home-slider></app-home-slider>
+  </section>
 
-<section class="md:w-[90%] mx-auto">
-    <div class="products">
-        <h2 class="text-3xl font-light my-3">Shope popular Categories</h2>
-        <app-products></app-products>
+  <!-- Features -->
+  <section class="features-section">
+
+    <div class="feature-card">
+      <i class="fa-solid fa-truck-fast"></i>
+
+      <div>
+        <h4>Free Shipping</h4>
+        <p>On orders over $100</p>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <i class="fa-solid fa-shield-heart"></i>
+
+      <div>
+        <h4>Secure Payment</h4>
+        <p>100% Protected</p>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <i class="fa-solid fa-rotate-left"></i>
+
+      <div>
+        <h4>Easy Returns</h4>
+        <p>30 Days Return</p>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <i class="fa-solid fa-headset"></i>
+
+      <div>
+        <h4>24/7 Support</h4>
+        <p>Always Here</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Categories -->
+
+  <section class="categories-section">
+
+    <div class="section-header">
+
+      
 
     </div>
 
-</section>
+    <app-category-slider></app-category-slider>
+
+  </section>
+
+  <!-- Products -->
+
+  <section class="products-section">
+
+    <div class="section-header">
+
+      <span>Featured</span>
+
+      <h2>Popular Products</h2>
+
+      <p>
+        Handpicked products loved by our customers.
+      </p>
+
+    </div>
+
+    <app-products></app-products>
+
+  </section>
+
+</main>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ProductsComponent } from "../products/products.component";
 import { HomeSliderComponent } from "../home-slider/home-slider.component";
 import { CategorySliderComponent } from "../category-slider/category-slider.component";
@@ -7,6 +7,7 @@ import { CategorySliderComponent } from "../category-slider/category-slider.comp
   selector: 'app-home',
   imports: [ProductsComponent, HomeSliderComponent, CategorySliderComponent],
   templateUrl: './home.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {

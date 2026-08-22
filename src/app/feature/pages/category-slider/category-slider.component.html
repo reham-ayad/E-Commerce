@@ -1,10 +1,44 @@
-<!-- <owl-carousel-o [options]="customOptions">
+<section class="category-slider">
 
-  @for (slide of categorylist; track slide) {
-    <ng-template carouselSlide [id]="slide._id">
-      <img class="h-[200px]" [src]="slide.image"  [title]="slide.name">
-      <p>{{slide.name}}</p>
-    </ng-template>
-  }
+  <div class="section-header">
+    <span>EXPLORE</span>
+    <h2>Shop by Category</h2>
+    <p>Discover our curated collection</p>
+  </div>
 
-</owl-carousel-o> -->
+  <div class="categories-wrapper">
+
+    @for (category of categorylist; track category._id) {
+
+      <div class="category-card">
+
+        <div class="category-image">
+
+          <img
+            [src]="category.image"
+            [alt]="category.name"
+          />
+
+          <div class="category-overlay">
+            <div class="category-content">
+
+              <span>EXPLORE</span>
+
+              <h3>
+                {{ category.name }}
+              </h3>
+
+              <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</section>

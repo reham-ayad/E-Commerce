@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth/auth.service';
@@ -8,6 +8,7 @@ import { AuthService } from '../../../core/services/auth/auth.service';
   selector: 'app-login',
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
@@ -30,6 +31,7 @@ export class LoginComponent {
     console.log('erorrs',this.loginForm.get('email')?.errors)
   
     console.log(this.loginForm);
+    // console.log('FORM VALUE:', this.loginForm.value);
     if(this.loginForm.valid){
       this.auth.login(this.loginForm.value).subscribe({
         next:(response)=>{

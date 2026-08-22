@@ -1,0 +1,499 @@
+// ==============================
+// Variables
+// ==============================
+
+$navy: #16213e;
+$navy-light: #24334d;
+$gold: #d4af37;
+$gold-light: #e6c75a;
+$white: #ffffff;
+$text: #333;
+$text-light: #777;
+$border: #e5e7eb;
+
+$transition: all .3s ease;
+
+
+// ==============================
+// Page
+// ==============================
+
+.checkout-page {
+
+  min-height: calc(100vh - 80px);
+
+  padding: 70px 20px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba($gold, .08),
+      transparent 35%
+    ),
+    #f7f7f5;
+
+}
+
+
+// ==============================
+// Container
+// ==============================
+
+.checkout-container {
+
+  width: min(700px, 100%);
+
+  margin: auto;
+
+}
+
+
+// ==============================
+// Header
+// ==============================
+
+.checkout-header {
+
+  text-align: center;
+
+  margin-bottom: 35px;
+
+}
+
+
+.checkout-icon {
+
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: $navy;
+
+  color: $gold;
+
+  font-size: 22px;
+
+  box-shadow:
+    0 10px 25px rgba($navy, .18);
+
+}
+
+
+.eyebrow {
+
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: $gold;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+}
+
+
+.checkout-header h1 {
+
+  margin: 0;
+
+  color: $navy;
+
+  font-size: clamp(30px, 5vw, 42px);
+
+  font-weight: 700;
+
+  letter-spacing: -1px;
+
+}
+
+
+.checkout-header p {
+
+  margin: 12px auto 0;
+
+  max-width: 500px;
+
+  color: $text-light;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+}
+
+
+// ==============================
+// Card
+// ==============================
+
+.checkout-card {
+
+  padding: 40px;
+
+  background: $white;
+
+  border: 1px solid rgba($navy, .06);
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, .08);
+
+}
+
+
+// ==============================
+// Form
+// ==============================
+
+.form-group {
+
+  margin-bottom: 25px;
+
+}
+
+
+.form-group label {
+
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: $navy;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: .3px;
+
+}
+
+
+.input-wrapper {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+
+  i {
+
+    position: absolute;
+
+    left: 18px;
+
+    color: #9ca3af;
+
+    font-size: 15px;
+
+    transition: $transition;
+
+  }
+
+
+  input {
+
+    width: 100%;
+
+    height: 52px;
+
+    padding: 0 18px 0 48px;
+
+    border: 1px solid $border;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #fafafa;
+
+    color: $text;
+
+    font-size: 14px;
+
+    transition: $transition;
+
+
+    &::placeholder {
+
+      color: #a1a1aa;
+
+    }
+
+
+    &:focus {
+
+      background: $white;
+
+      border-color: $gold;
+
+      box-shadow:
+        0 0 0 3px rgba($gold, .1);
+
+    }
+
+
+    &:focus + i {
+
+      color: $gold;
+
+    }
+
+  }
+
+
+  &:focus-within i {
+
+    color: $gold;
+
+  }
+
+}
+
+
+// ==============================
+// Payment Info
+// ==============================
+
+.payment-info {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin: 30px 0;
+
+  padding: 18px;
+
+  background: rgba($gold, .07);
+
+  border: 1px solid rgba($gold, .2);
+
+  border-radius: 12px;
+
+
+  .payment-icon {
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: $navy;
+
+    color: $gold;
+
+  }
+
+
+  h3 {
+
+    margin: 0 0 4px;
+
+    color: $navy;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+  }
+
+
+  p {
+
+    margin: 0;
+
+    color: $text-light;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+  }
+
+}
+
+
+// ==============================
+// Confirm Button
+// ==============================
+
+.confirm-btn {
+
+  width: 100%;
+
+  height: 54px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: $navy;
+
+  color: $white;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: $transition;
+
+
+  i {
+
+    color: $gold;
+
+    transition: $transition;
+
+  }
+
+
+  &:hover:not(:disabled) {
+
+    background: $navy-light;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 10px 25px rgba($navy, .2);
+
+
+    i {
+
+      transform: translateX(5px);
+
+    }
+
+  }
+
+
+  &:disabled {
+
+    opacity: .5;
+
+    cursor: not-allowed;
+
+  }
+
+}
+
+
+// ==============================
+// Footer Features
+// ==============================
+
+.checkout-footer {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 30px;
+
+  margin-top: 28px;
+
+  color: #888;
+
+  font-size: 11px;
+
+
+  span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+  }
+
+
+  i {
+
+    color: $gold;
+
+  }
+
+}
+
+
+// ==============================
+// Responsive
+// ==============================
+
+@media (max-width: 600px) {
+
+  .checkout-page {
+
+    padding: 45px 15px;
+
+  }
+
+
+  .checkout-card {
+
+    padding: 25px 20px;
+
+    border-radius: 16px;
+
+  }
+
+
+  .checkout-header {
+
+    margin-bottom: 25px;
+
+  }
+
+
+  .checkout-header h1 {
+
+    font-size: 30px;
+
+  }
+
+
+  .checkout-footer {
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+  }
+
+}

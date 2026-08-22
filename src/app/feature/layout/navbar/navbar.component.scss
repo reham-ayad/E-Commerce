@@ -1,0 +1,438 @@
+// ==============================
+// Variables
+// ==============================
+
+$navy: #16213e;
+$navy-light: #24334d;
+$gold: #d4af37;
+$white: #ffffff;
+$text-light: #d1d5db;
+$transition: all .3s ease;
+
+// ==============================
+// Navbar
+// ==============================
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: $navy;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+}
+
+.container {
+  width: min(1400px, 92%);
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  min-height: 80px;
+}
+
+// ==============================
+// Logo
+// ==============================
+
+.logo {
+  text-decoration: none;
+
+  color: $white;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  transition: $transition;
+
+  &:hover {
+    color: $gold;
+  }
+}
+
+// ==============================
+// Links
+// ==============================
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: rgba($white, .75);
+
+    font-size: 15px;
+    font-weight: 500;
+
+    position: relative;
+
+    transition: $transition;
+
+    &:hover {
+      color: $white;
+    }
+
+    &.active {
+      color: $gold;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+
+      width: 0;
+      height: 2px;
+
+      background: $gold;
+
+      transition: .3s;
+    }
+
+    &:hover::after,
+    &.active::after {
+      width: 100%;
+    }
+  }
+}
+
+// ==============================
+// Search
+// ==============================
+
+.search-box {
+  flex: 1;
+  max-width: 360px;
+
+  position: relative;
+
+  input {
+    width: 100%;
+    height: 46px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 30px;
+
+    background: $navy-light;
+
+    color: white;
+
+    padding: 0 18px 0 45px;
+
+    font-size: 14px;
+
+    &::placeholder {
+      color: #cbd5e1;
+    }
+
+    &:focus {
+      background: lighten($navy-light, 5%);
+    }
+  }
+
+  i {
+    position: absolute;
+
+    left: 18px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #cbd5e1;
+  }
+}
+
+// ==============================
+// Right Side
+// ==============================
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+// ==============================
+// Language
+// ==============================
+
+.language {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: rgba($white, .6);
+
+  button {
+    border: none;
+    background: transparent;
+
+    color: rgba($white, .8);
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: $transition;
+
+    &:hover {
+      color: $gold;
+    }
+  }
+}
+
+// ==============================
+// Icons
+// ==============================
+
+.icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: $navy-light;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+
+  color: white;
+
+  transition: $transition;
+
+  &:hover {
+    background: $gold;
+    color: $navy;
+  }
+}
+
+.cart {
+  position: relative;
+}
+
+.login {
+  background: $gold;
+  color: $navy;
+
+  padding: 10px 22px;
+
+  border-radius: 30px;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  transition: $transition;
+
+  &:hover {
+    background: white;
+    transform: translateY(-2px);
+  }
+}
+// ==============================
+// Social
+// ==============================
+
+.social {
+  display: flex;
+  gap: 12px;
+
+  a {
+    color: rgba($white, .7);
+
+    transition: $transition;
+
+    &:hover {
+      color: $gold;
+    }
+  }
+}
+
+// ==============================
+// Button
+// ==============================
+
+.btn {
+  background: $gold;
+
+  color: $navy;
+
+  border: none;
+
+  text-decoration: none;
+
+  padding: 11px 22px;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: $transition;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: white;
+  }
+}
+
+// ==============================
+// Responsive
+// ==============================
+
+@media (max-width: 1100px) {
+
+  .search-box {
+    display: none;
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .container {
+    flex-wrap: wrap;
+    padding: 20px 0;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .logo {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links {
+    gap: 15px;
+
+    a {
+      font-size: 14px;
+    }
+  }
+
+  .social {
+    display: none;
+  }
+
+}
+.language-dropdown{
+    position: relative;
+
+    &:hover .dropdown-menu{
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(8px);
+    }
+}
+
+.language-btn{
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background: transparent;
+    border: none;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: .3s;
+
+    &:hover{
+        color: #D4AF37;
+    }
+}
+
+.dropdown-menu{
+
+    position: absolute;
+
+    top: 100%;
+    right: 0;
+
+    width: 170px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.15);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(20px);
+
+    transition: .3s;
+
+    button{
+
+        width:100%;
+
+        padding:14px 18px;
+
+        background:none;
+
+        border:none;
+
+        text-align:left;
+
+        cursor:pointer;
+
+        font-size:15px;
+
+        transition:.3s;
+
+        &:hover{
+
+            background:#f4f4f4;
+
+        }
+
+    }
+
+}

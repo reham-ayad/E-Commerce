@@ -5,9 +5,12 @@ import { AuthService } from '../../services/auth/auth.service';
 export const checkTokenGuard: CanActivateFn = (route, state) => {
 let _auth:AuthService=  inject(AuthService);
   let router=inject(Router)
+    // console.log('USER DATA:', _auth.userData.getValue());
+
   if (_auth.userData.getValue()==null){
     return true;
   }
 router.navigate(['/home']);
   return false;
 };
+  

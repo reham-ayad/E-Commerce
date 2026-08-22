@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import{AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from'@angular/forms';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { error } from 'console';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   selector: 'app-signup',
   imports: [ReactiveFormsModule],
   templateUrl: './signup.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FlowbiteService } from '../../../core/services/flowbite.service';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../core/services/auth/auth.service';
@@ -9,6 +9,7 @@ import { TranslationService } from '../../../core/services/translate/translation
   selector: 'app-navbar',
   imports: [RouterLink,RouterLinkActive,TranslateModule],
   templateUrl: './navbar.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {

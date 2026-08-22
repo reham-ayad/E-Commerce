@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BrandService } from '../../../core/services/brand/brand.service';
 import { Brands } from '../../../shared/interface/brands/brands';
 
@@ -6,6 +6,7 @@ import { Brands } from '../../../shared/interface/brands/brands';
   selector: 'app-brands',
   imports: [],
   templateUrl: './brands.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './brands.component.scss'
 })
 export class BrandsComponent {

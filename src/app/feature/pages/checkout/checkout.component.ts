@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../../core/services/cart/cart.service';
@@ -7,6 +7,7 @@ import { CartService } from '../../../core/services/cart/cart.service';
   selector: 'app-checkout',
   imports: [ReactiveFormsModule],
   templateUrl: './checkout.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './checkout.component.scss'
 })
 export class CheckoutComponent {

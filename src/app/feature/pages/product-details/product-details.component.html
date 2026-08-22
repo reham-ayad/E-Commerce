@@ -1,27 +1,168 @@
-<div class="w-[80%] flex items-center mx-auto p-3">
-    <div class=" md:w-1/3">
-<img class="w-full pe-3" [src]="productDetails.imageCover" alt=""> </div>
-    <div class=" md:w-2/3 ">
-<div class="pb-3 " >
-    <h2 class="text-slate-950 font-medium">{{productDetails.title}}</h2>
-    <p class="font-light text-gray-600">{{productDetails.description}}</p>
-    <p class="text-green-500 font-medium">{{productDetails.category.name}}</p>
-    
-    <div>
-        <p>{{productDetails.price | currency:'EUR':'symbol-narrow'}}</p>
-    <div>
-        <span>{{productDetails.ratingsAverage}}</span>
-        <i class="fa-solid fa-star text-yellow-300"></i>
-    </div> 
-    </div>
-</div>
+<section class="product-details">
 
-<div>
-    <button (click)="addToCart(productDetails._id)" class="w-[95%] mx-auto text-white bg-green-500 rounded py-2 "> Add To Cart</button>
-</div>
+  <div class="product-container">
 
+    <!-- Product Image -->
+    <div class="product-image-wrapper">
+
+      <div class="image-card">
+
+        <img
+          [src]="productDetails.imageCover"
+          [alt]="productDetails.title"
+        />
+
+        <div class="image-badge">
+          <i class="fa-solid fa-gem"></i>
+          LUXE
+        </div>
+
+      </div>
 
     </div>
 
 
-</div>
+    <!-- Product Info -->
+    <div class="product-info">
+
+      <!-- Category -->
+      <span class="product-category">
+        {{ productDetails.category.name }}
+      </span>
+
+
+      <!-- Title -->
+      <h1>
+        {{ productDetails.title }}
+      </h1>
+
+
+      <!-- Rating -->
+      <div class="rating">
+
+        <div class="stars">
+
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+
+        </div>
+
+        <span>
+          {{ productDetails.ratingsAverage }}
+        </span>
+
+        <small>
+          Customer Rating
+        </small>
+
+      </div>
+
+
+      <!-- Divider -->
+      <div class="divider"></div>
+
+
+      <!-- Price -->
+      <div class="price-section">
+
+        <span class="price-label">
+          PRICE
+        </span>
+
+        <div class="price">
+          {{ productDetails.price | currency:'EUR':'symbol-narrow' }}
+        </div>
+
+      </div>
+
+
+      <!-- Description -->
+      <div class="description">
+
+        <h3>
+          Product Description
+        </h3>
+
+        <p>
+          {{ productDetails.description }}
+        </p>
+
+      </div>
+
+
+      <!-- Actions -->
+      <div class="actions">
+
+        <button
+          (click)="addToCart(productDetails._id)"
+          class="add-cart"
+        >
+
+          <i class="fa-solid fa-bag-shopping"></i>
+
+          <span>
+            Add To Cart
+          </span>
+
+          <i class="fa-solid fa-arrow-right arrow"></i>
+
+        </button>
+
+
+        <button class="wishlist">
+
+          <i class="fa-regular fa-heart"></i>
+
+        </button>
+
+      </div>
+
+
+      <!-- Features -->
+      <div class="features">
+
+        <div class="feature">
+
+          <i class="fa-solid fa-truck"></i>
+
+          <div>
+            <strong>Fast Delivery</strong>
+            <span>Quick & reliable shipping</span>
+          </div>
+
+        </div>
+
+
+        <div class="feature">
+
+          <i class="fa-solid fa-shield-halved"></i>
+
+          <div>
+            <strong>Secure Payment</strong>
+            <span>100% secure checkout</span>
+          </div>
+
+        </div>
+
+
+        <div class="feature">
+
+          <i class="fa-solid fa-rotate-left"></i>
+
+          <div>
+            <strong>Easy Returns</strong>
+            <span>Simple return policy</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

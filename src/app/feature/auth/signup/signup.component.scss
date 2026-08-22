@@ -1,0 +1,528 @@
+//======================================
+// Variables
+//======================================
+
+$navy: #16213e;
+$navy-dark: #080f1d;
+$gold: #d4af37;
+
+$white: #ffffff;
+$background: #f8f7f9;
+
+$text: #1f2937;
+$text-light: #6b7280;
+
+$error: #dc3545;
+
+$transition: all .3s ease;
+
+
+//======================================
+// Page
+//======================================
+
+.register-page {
+
+  min-height: 100vh;
+
+  display: grid;
+
+  grid-template-columns: 45% 55%;
+
+  background: $background;
+
+}
+
+
+//======================================
+// Left Cover
+//======================================
+
+.register-cover {
+
+  position: relative;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  padding: 70px;
+
+  overflow: hidden;
+
+  background: url("../../../../../src/assets/images/1125125919695776182.jpg")
+    center center / cover no-repeat;
+
+}
+
+
+// Dark overlay
+
+.register-cover .overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(5, 10, 25, .94),
+      rgba(10, 17, 35, .72),
+      rgba(0, 0, 0, .9)
+    );
+
+}
+
+
+//======================================
+// Cover Content
+//======================================
+
+.cover-content {
+
+  position: relative;
+
+  z-index: 2;
+
+  color: $white;
+
+  max-width: 500px;
+
+}
+
+
+.brand {
+
+  display: inline-block;
+
+  margin-bottom: 30px;
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+  letter-spacing: 5px;
+
+  color: $gold;
+
+}
+
+
+.cover-content h1 {
+
+  font-size: clamp(52px, 5vw, 78px);
+
+  line-height: 1.03;
+
+  font-weight: 700;
+
+  margin-bottom: 25px;
+
+}
+
+
+.cover-content p {
+
+  max-width: 420px;
+
+  color: rgba(255, 255, 255, .78);
+
+  font-size: 19px;
+
+  line-height: 1.7;
+
+}
+
+
+//======================================
+// Right Side
+//======================================
+
+.register-form {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 50px;
+
+}
+
+
+//======================================
+// Card
+//======================================
+
+.card {
+
+  width: 100%;
+
+  max-width: 560px;
+
+  background: $white;
+
+  border: 1px solid rgba(0, 0, 0, .07);
+
+  border-radius: 24px;
+
+  padding: 45px 55px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, .07);
+
+}
+
+
+//======================================
+// Logo
+//======================================
+
+.logo {
+
+  text-align: center;
+
+  color: $navy;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  letter-spacing: 4px;
+
+  margin-bottom: 28px;
+
+}
+
+
+//======================================
+// Heading
+//======================================
+
+.card h1 {
+
+  color: $text;
+
+  font-size: 42px;
+
+  font-weight: 600;
+
+  margin-bottom: 8px;
+
+}
+
+
+.subtitle {
+
+  color: $text-light;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  margin-bottom: 28px;
+
+}
+
+
+//======================================
+// Server Error
+//======================================
+
+.server-error {
+
+  padding: 12px 15px;
+
+  margin-bottom: 18px;
+
+  border-radius: 10px;
+
+  background: #fff1f2;
+
+  color: $error;
+
+  border: 1px solid #fecdd3;
+
+  font-size: 14px;
+
+}
+
+
+//======================================
+// Input
+//======================================
+
+.input-group {
+
+  position: relative;
+
+  margin-bottom: 5px;
+
+}
+
+
+.input-group input {
+
+  width: 100%;
+
+  height: 54px;
+
+  padding: 0 48px 0 18px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #f5f4f5;
+
+  color: $text;
+
+  font-size: 15px;
+
+  transition: $transition;
+
+}
+
+
+.input-group input::placeholder {
+
+  color: #777;
+
+}
+
+
+.input-group input:focus {
+
+  background: $white;
+
+  border-color: $navy;
+
+  box-shadow:
+    0 0 0 3px rgba(22, 33, 62, .08);
+
+}
+
+
+.input-group i {
+
+  position: absolute;
+
+  right: 18px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #777;
+
+  font-size: 16px;
+
+}
+
+
+//======================================
+// Validation Errors
+//======================================
+
+.error {
+
+  margin: 7px 0 12px;
+
+  padding: 9px 12px;
+
+  border-radius: 8px;
+
+  background: #fff1f2;
+
+  color: $error;
+
+  border: 1px solid #fecdd3;
+
+  font-size: 12px;
+
+}
+
+
+.error p {
+
+  margin: 0;
+
+}
+
+
+//======================================
+// Register Button
+//======================================
+
+.register-btn {
+
+  width: 100%;
+
+  height: 56px;
+
+  margin-top: 20px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: $navy;
+
+  color: $white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: $transition;
+
+}
+
+
+.register-btn:hover:not(:disabled) {
+
+  background: $gold;
+
+  color: $navy;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(212, 175, 55, .2);
+
+}
+
+
+.register-btn:disabled {
+
+  opacity: .6;
+
+  cursor: not-allowed;
+
+}
+
+
+//======================================
+// Login Link
+//======================================
+
+.login-link {
+
+  text-align: center;
+
+  margin-top: 28px;
+
+  color: $text-light;
+
+  font-size: 14px;
+
+}
+
+
+.login-link a {
+
+  color: $navy;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  margin-left: 5px;
+
+  transition: $transition;
+
+}
+
+
+.login-link a:hover {
+
+  color: $gold;
+
+}
+
+
+//======================================
+// Responsive
+//======================================
+
+@media (max-width: 1000px) {
+
+  .register-page {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .register-cover {
+
+    display: none;
+
+  }
+
+
+  .register-form {
+
+    min-height: 100vh;
+
+    padding: 30px 20px;
+
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .register-form {
+
+    padding: 20px 15px;
+
+  }
+
+
+  .card {
+
+    padding: 35px 22px;
+
+    border-radius: 18px;
+
+  }
+
+
+  .logo {
+
+    font-size: 26px;
+
+  }
+
+
+  .card h1 {
+
+    font-size: 34px;
+
+  }
+
+
+  .subtitle {
+
+    font-size: 14px;
+
+  }
+
+
+  .input-group input {
+
+    height: 52px;
+
+  }
+
+}

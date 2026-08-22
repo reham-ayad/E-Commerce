@@ -1,8 +1,8 @@
 
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ResetPasswordService } from '../../../core/services/reset-password.service';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -10,11 +10,14 @@ import { Router } from '@angular/router';
   selector: 'app-reset-password',
   imports: [ReactiveFormsModule],
   templateUrl: './reset-password.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './reset-password.component.scss'
 })
 export class ResetPasswordComponent {
   step:number=1;
-constructor(private _resetpassword:ResetPasswordService, private toastr: ToastrService,private _auth:AuthService,private _router:Router){}
+constructor(private _resetpassword:ResetPasswordService, 
+  // private toastr: ToastrService,
+  private _auth:AuthService,private _router:Router){}
   sendemail:FormGroup=new FormGroup({
     email:new FormControl(null,[Validators.required,Validators.email])
   })
@@ -23,7 +26,7 @@ this._resetpassword.verfyEmail(this.sendemail.value).subscribe({
   next:(res)=>{
     if(res.statusMsg=="success"){
       this.step=2
-      this.toastr.success(res.message);
+      // this.toastr.success(res.message);
     }
   },
   error:(err)=>{}

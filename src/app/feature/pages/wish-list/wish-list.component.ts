@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CartDetails } from '../../../shared/interface/cart-details';
 import { WishListService } from '../../../core/services/wishList/wish-list.service';
 import { Router, RouterLink } from '@angular/router';
@@ -7,13 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from '../../../shared/pipe/filter.pipe';
 import { WishList } from '../../../shared/interface/wish/wish-list';
 import { count } from 'console';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../../core/services/cart/cart.service';
 
 @Component({
   selector: 'app-wish-list',
   imports: [CurrencyPipe,UpperCasePipe,DatePipe,FilterPipe,FormsModule,RouterLink],
   templateUrl: './wish-list.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './wish-list.component.scss'
 })
 export class WishListComponent implements OnInit {
@@ -23,7 +24,9 @@ export class WishListComponent implements OnInit {
   wishList:WishList []=[];
   router: any;
   wishlsitId!:string
-  constructor(private wishlsit:WishListService,private _router:Router,private cart:CartService, private toastr: ToastrService){}
+  constructor(private wishlsit:WishListService,private _router:Router,private cart:CartService,
+    //  private toastr: ToastrService
+    ){}
   getwishlsitproducts(){
     this.wishlsit.getProduct().subscribe({
       next:(res)=>{
@@ -42,18 +45,18 @@ export class WishListComponent implements OnInit {
   }
   addToCart(productId:string){
     this.cart.addProduct(productId).subscribe({
-      next:(res)=>{
-        this.toastr.success(res.message,'',{ 
-        closeButton:true,
-        progressBar:true,
-        progressAnimation:'increasing'
-      })
+      // next:(res)=>{
+      //   this.toastr.success(res.message,'',{ 
+      //   closeButton:true,
+      //   progressBar:true,
+      //   progressAnimation:'increasing'
+      // })
   
-      console.log(res.message);
-      this.cart.cartNumber.next(res.numOfCartItems);
+      // console.log(res.message);
+      // this.cart.cartNumber.next(res.numOfCartItems);
   
   
-      }
+      // }
      
     })
   }

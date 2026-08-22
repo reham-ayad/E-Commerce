@@ -1,17 +1,49 @@
+<section class="brands">
 
-<section class="w-[90%] mx-auto py-10">
-    <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Our Brands</h2>
-  
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6" >
-      @for(item of brandsList; track $index) {
-        <div  class=" bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center">
-          
-          <div class="w-32 h-32 flex items-center justify-center">
-            <img [src]="item.image" [alt]="item.name" class="max-w-full max-h-full object-contain">
-          </div>
-  
-          <h3 class="mt-4 text-lg font-semibold text-gray-700">{{ item.name }}</h3>
-        </div>
-      }
+    <div class="section-title">
+
+        <span>OUR PARTNERS</span>
+
+        <h2>Trusted Brands</h2>
+
+        <p>
+            Discover premium brands trusted by thousands of customers worldwide.
+        </p>
+
     </div>
-  </section>
+
+    <div class="brands-grid">
+
+        @for(item of brandsList; track $index){
+
+        <div class="brand-card">
+
+            <div class="brand-logo">
+
+                <img
+                    [src]="item.image"
+                    [alt]="item.name">
+
+            </div>
+
+            <div class="brand-info">
+
+                <h3>{{item.name}}</h3>
+
+                <button>
+
+                    Explore Collection
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+        }
+
+    </div>
+
+</section>

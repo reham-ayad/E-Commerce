@@ -1,35 +1,124 @@
-<section class="w-[90%] mx-auto py-12">
-    <h2 class="text-4xl font-bold text-center text-gray-800 mb-10">Your Wishlist ❤️</h2>
+<section class="wishlist-page">
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-        @for(item of wishList; track $index) {
-            <div class="relative bg-white shadow-xl rounded-xl overflow-hidden transition-transform duration-500 hover:-translate-y-3 hover:shadow-2xl">
-                
-                <div class="relative">
-                    <img [src]="item.imageCover" class="w-full h-56 object-cover rounded-t-xl" alt="Product">
-                    <span class="absolute top-3 left-3 bg-green-500 text-white px-3 py-1 text-xs font-semibold rounded-full shadow-md">
-                        {{ item.category.name | uppercase }}
-                    </span>
-                </div>
+  <div class="wishlist-header">
+    <span class="eyebrow">LUXE COLLECTION</span>
 
-                <div class="p-5 text-center">
-                    <h3 class="text-lg font-bold text-gray-700 truncate">{{ item.name }}</h3>
-                    
-                    <p class="text-xl font-semibold text-green-600 mt-2">
-                        {{ item.price | currency:'EUR':'symbol-narrow' }}
-                    </p>
+    <h1>Your Wishlist</h1>
 
-                    <div class="flex justify-center gap-6 mt-4">
-                        <button (click)="removeitem(item.id)" class="text-red-500 text-2xl transition-all duration-300 hover:text-red-700">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
+    <p>
+      Your favorite pieces, saved in one place.
+    </p>
+  </div>
 
-                        <button (click)="addToCart(item.id)" class="text-green-500 text-2xl transition-all duration-300 hover:text-green-700">
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </button>
-                    </div>
-                </div>
+  @if (wishList.length > 0) {
+
+    <div class="wishlist-grid">
+
+      @for (item of wishList; track $index) {
+
+        <article class="wishlist-card">
+
+          <!-- Product Image -->
+          <div class="product-image">
+
+            <img
+              [src]="item.imageCover"
+              [alt]="item.name"
+            />
+
+            <span class="category">
+              {{ item.category.name | uppercase }}
+            </span>
+
+            <button
+              class="remove-btn"
+              (click)="removeitem(item.id)"
+              aria-label="Remove from wishlist"
+            >
+              <i class="fa-solid fa-heart"></i>
+            </button>
+
+          </div>
+
+
+          <!-- Product Info -->
+          <div class="product-info">
+
+            <h2>
+              {{ item.name }}
+            </h2>
+
+            <div class="product-meta">
+
+              <span class="price">
+                {{ item.price | currency:'EUR':'symbol-narrow' }}
+              </span>
+
+              <span class="category-name">
+                {{ item.category.name }}
+              </span>
+
             </div>
-        }
+
+
+            <!-- Actions -->
+            <div class="card-actions">
+
+              <button
+                class="cart-btn"
+                (click)="addToCart(item.id)"
+              >
+                <span>Add To Cart</span>
+
+                <i class="fa-solid fa-bag-shopping"></i>
+              </button>
+
+              <button
+                class="delete-btn"
+                (click)="removeitem(item.id)"
+                aria-label="Remove product"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      }
+
     </div>
+
+  }
+
+  @else {
+
+    <!-- Empty Wishlist -->
+    <div class="empty-wishlist">
+
+      <div class="empty-icon">
+        <i class="fa-regular fa-heart"></i>
+      </div>
+
+      <h2>Your Wishlist Is Empty</h2>
+
+      <p>
+        Save the pieces you love and find them here later.
+      </p>
+
+      <a
+        routerLink="/products"
+        class="shop-btn"
+      >
+        Explore Collection
+
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+    </div>
+
+  }
+
 </section>
