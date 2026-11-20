@@ -61,3 +61,14 @@ body{
   --mdc-snackbar-supporting-text-color: #ffffff;
   --mat-snack-bar-button-color: #ffffff;
 }
+
+
+html,
+body {
+  direction: ltr;
+  text-align: left;
+}
+
+body {
+  margin: 0;
+}
