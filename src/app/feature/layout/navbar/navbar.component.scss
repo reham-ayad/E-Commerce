@@ -1,12 +1,16 @@
+
 // ==============================
 // Variables
 // ==============================
 
-$navy: #16213e;
-$navy-light: #24334d;
+$navy: #14213d;
+$navy-dark: #101a30;
+$navy-light: #263754;
 $gold: #d4af37;
+$gold-light: #e8c85a;
 $white: #ffffff;
-$text-light: #d1d5db;
+$text-light: #e2e8f0;
+
 $transition: all .3s ease;
 
 // ==============================
@@ -17,22 +21,21 @@ $transition: all .3s ease;
   position: sticky;
   top: 0;
   z-index: 1000;
-
-  background: $navy;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+  width: 100%;
+  background: $navy-dark;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, .18);
+  border-bottom: 1px solid rgba($gold, .15);
 }
 
 .container {
   width: min(1400px, 92%);
+  min-height: 80px;
   margin: auto;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  gap: 30px;
-
-  min-height: 80px;
+  gap: 25px;
 }
 
 // ==============================
@@ -40,15 +43,12 @@ $transition: all .3s ease;
 // ==============================
 
 .logo {
-  text-decoration: none;
-
   color: $white;
-
-  font-size: 30px;
+  text-decoration: none;
+  font-size: 29px;
   font-weight: 700;
-
   letter-spacing: 2px;
-
+  flex-shrink: 0;
   transition: $transition;
 
   &:hover {
@@ -57,13 +57,25 @@ $transition: all .3s ease;
 }
 
 // ==============================
-// Links
+// Drawer
+// ==============================
+
+.nav-drawer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+// ==============================
+// Navigation
 // ==============================
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 28px;
 
   list-style: none;
   padding: 0;
@@ -74,20 +86,15 @@ $transition: all .3s ease;
   }
 
   a {
+    position: relative;
     text-decoration: none;
-    color: rgba($white, .75);
-
+    color: rgba($white, .8);
     font-size: 15px;
     font-weight: 500;
-
-    position: relative;
-
+    white-space: nowrap;
     transition: $transition;
 
-    &:hover {
-      color: $white;
-    }
-
+    &:hover,
     &.active {
       color: $gold;
     }
@@ -96,14 +103,11 @@ $transition: all .3s ease;
       content: "";
       position: absolute;
       left: 0;
-      bottom: -8px;
-
+      bottom: -9px;
       width: 0;
       height: 2px;
-
       background: $gold;
-
-      transition: .3s;
+      transition: $transition;
     }
 
     &:hover::after,
@@ -119,320 +123,370 @@ $transition: all .3s ease;
 
 .search-box {
   flex: 1;
-  max-width: 360px;
-
+  max-width: 300px;
+  min-width: 160px;
   position: relative;
 
   input {
+    box-sizing: border-box;
     width: 100%;
-    height: 46px;
+    height: 44px;
+    padding: 0 18px 0 45px;
 
-    border: none;
+    border: 1px solid rgba($white, .08);
     outline: none;
-
     border-radius: 30px;
 
     background: $navy-light;
-
-    color: white;
-
-    padding: 0 18px 0 45px;
+    color: $white;
 
     font-size: 14px;
+    transition: $transition;
 
     &::placeholder {
-      color: #cbd5e1;
+      color: #aab5c5;
     }
 
     &:focus {
-      background: lighten($navy-light, 5%);
+      border-color: $gold;
+      box-shadow: 0 0 0 3px rgba($gold, .12);
     }
   }
 
   i {
     position: absolute;
-
     left: 18px;
     top: 50%;
-
     transform: translateY(-50%);
-
-    color: #cbd5e1;
+    color: $gold;
   }
 }
 
 // ==============================
-// Right Side
+// Actions
 // ==============================
 
 .actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
+  flex-shrink: 0;
 }
 
 // ==============================
-// Language
-// ==============================
-
-.language {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  color: rgba($white, .6);
-
-  button {
-    border: none;
-    background: transparent;
-
-    color: rgba($white, .8);
-
-    cursor: pointer;
-
-    font-size: 14px;
-
-    transition: $transition;
-
-    &:hover {
-      color: $gold;
-    }
-  }
-}
-
-// ==============================
-// Icons
+// Cart & Wishlist
 // ==============================
 
 .icon {
-  width: 42px;
-  height: 42px;
-
-  border-radius: 50%;
-
-  background: $navy-light;
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  text-decoration: none;
+  border-radius: 50%;
+  background: $navy-light;
+  border: 1px solid rgba($gold, .35);
 
-  color: white;
+  text-decoration: none;
+  font-size: 18px;
 
   transition: $transition;
 
+  i {
+    color: inherit;
+  }
+
   &:hover {
-    background: $gold;
-    color: $navy;
+    transform: translateY(-3px);
+  }
+}
+
+.wishlist {
+  color: #ff8095;
+
+  &:hover {
+    background: #ff8095;
+    border-color: #ff8095;
+    color: $white;
   }
 }
 
 .cart {
-  position: relative;
+  color: $gold;
+
+  &:hover {
+    background: $gold;
+    border-color: $gold;
+    color: $navy-dark;
+  }
 }
 
+// ==============================
+// Login
+// ==============================
+
 .login {
-  background: $gold;
-  color: $navy;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  padding: 10px 22px;
-
+  padding: 11px 23px;
   border-radius: 30px;
 
-  text-decoration: none;
+  background: $gold;
+  color: $navy-dark;
 
-  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
 
   transition: $transition;
 
   &:hover {
-    background: white;
+    background: $gold-light;
     transform: translateY(-2px);
   }
 }
+
 // ==============================
-// Social
+// Logout
 // ==============================
 
-.social {
-  display: flex;
-  gap: 12px;
+.logout {
+  padding: 11px 23px;
+  border: none;
+  border-radius: 30px;
 
-  a {
-    color: rgba($white, .7);
+  background: $gold;
+  color: $navy-dark;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  white-space: nowrap;
+  transition: $transition;
+
+  &:hover {
+    background: $gold-light;
+    transform: translateY(-2px);
+  }
+}
+
+// ==============================
+// Hamburger
+// ==============================
+
+.menu-toggle {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  border: 1px solid rgba($gold, .35);
+  border-radius: 10px;
+
+  background: $navy-light;
+  cursor: pointer;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 2px;
+
+    border-radius: 5px;
+    background: $gold;
 
     transition: $transition;
 
-    &:hover {
-      color: $gold;
+    &:nth-child(1).active {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    &:nth-child(2).active {
+      opacity: 0;
+    }
+
+    &:nth-child(3).active {
+      transform: translateY(-8px) rotate(-45deg);
     }
   }
-}
-
-// ==============================
-// Button
-// ==============================
-
-.btn {
-  background: $gold;
-
-  color: $navy;
-
-  border: none;
-
-  text-decoration: none;
-
-  padding: 11px 22px;
-
-  border-radius: 30px;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: $transition;
 
   &:hover {
-    transform: translateY(-2px);
-    background: white;
+    border-color: $gold;
   }
 }
 
 // ==============================
-// Responsive
+// Overlay
+// ==============================
+
+.menu-overlay {
+  position: fixed;
+  inset: 80px 0 0;
+  z-index: 900;
+
+  background: rgba(0, 0, 0, .55);
+  backdrop-filter: blur(2px);
+}
+
+// ==============================
+// Tablet
 // ==============================
 
 @media (max-width: 1100px) {
 
-  .search-box {
-    display: none;
+  .menu-toggle {
+    display: flex;
+    flex-shrink: 0;
   }
 
-}
-
-@media (max-width: 900px) {
-
   .container {
-    flex-wrap: wrap;
-    padding: 20px 0;
+    width: 92%;
+  }
+
+  .nav-drawer {
+    position: fixed;
+    top: 80px;
+    right: 0;
+
+    width: min(350px, 85%);
+    height: calc(100dvh - 80px);
+
+    padding: 30px 24px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 30px;
+
+    overflow-y: auto;
+
+    background: $navy-dark;
+    border-left: 1px solid rgba($gold, .2);
+    box-shadow: -10px 10px 30px rgba(0, 0, 0, .2);
+
+    transform: translateX(100%);
+    visibility: hidden;
+
+    transition: transform .35s ease, visibility .35s ease;
+
+    &.open {
+      transform: translateX(0);
+      visibility: visible;
+    }
   }
 
   .nav-links {
     width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    li {
+      width: 100%;
+      border-bottom: 1px solid rgba($white, .08);
+    }
+
+    a {
+      display: block;
+      padding: 16px 5px;
+      font-size: 16px;
+
+      &::after {
+        display: none;
+      }
+
+      &:hover,
+      &.active {
+        padding-left: 12px;
+        color: $gold;
+      }
+    }
+  }
+
+  .search-box {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
   }
 
   .actions {
     width: 100%;
-    justify-content: center;
-    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 18px;
+    padding-top: 20px;
+    border-top: 1px solid rgba($white, .1);
   }
-
 }
 
-@media (max-width: 600px) {
+// ==============================
+// Mobile
+// ==============================
+
+@media (max-width: 480px) {
+
+  .container {
+    min-height: 70px;
+    width: 92%;
+  }
 
   .logo {
-    width: 100%;
-    text-align: center;
+    font-size: 25px;
   }
 
-  .nav-links {
-    gap: 15px;
-
-    a {
-      font-size: 14px;
-    }
+  .menu-toggle {
+    width: 42px;
+    height: 42px;
   }
 
-  .social {
-    display: none;
+  .nav-drawer {
+    top: 70px;
+    height: calc(100dvh - 70px);
+    width: min(320px, 88%);
+    padding: 25px 20px;
   }
 
-}
-.language-dropdown{
-    position: relative;
+  .menu-overlay {
+    inset: 70px 0 0;
+  }
 
-    &:hover .dropdown-menu{
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(8px);
-    }
-}
+  .actions {
+    gap: 13px;
+  }
 
-.language-btn{
+  .icon {
+    width: 41px;
+    height: 41px;
+  }
 
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    background: transparent;
-    border: none;
-
-    color: white;
-
-    cursor: pointer;
-
-    font-size: 18px;
-
-    transition: .3s;
-
-    &:hover{
-        color: #D4AF37;
-    }
+  .login,
+  .logout {
+    padding: 10px 20px;
+  }
 }
 
-.dropdown-menu{
+// ==============================
+// Accessibility
+// ==============================
 
-    position: absolute;
-
-    top: 100%;
-    right: 0;
-
-    width: 170px;
-
-    background: white;
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-    box-shadow: 0 15px 35px rgba(0,0,0,.15);
-
-    opacity: 0;
-    visibility: hidden;
-
-    transform: translateY(20px);
-
-    transition: .3s;
-
-    button{
-
-        width:100%;
-
-        padding:14px 18px;
-
-        background:none;
-
-        border:none;
-
-        text-align:left;
-
-        cursor:pointer;
-
-        font-size:15px;
-
-        transition:.3s;
-
-        &:hover{
-
-            background:#f4f4f4;
-
-        }
-
-    }
-
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
 }

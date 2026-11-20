@@ -1,97 +1,144 @@
+
 <nav class="navbar">
 
   <div class="container">
 
     <!-- Logo -->
-    <a routerLink="/home" class="logo">
+    <a routerLink="/home" class="logo" (click)="closeMenu()">
       LUXE
     </a>
 
-    <!-- Navigation -->
-    <ul class="nav-links">
-      <li>
-        <a routerLink="/home" routerLinkActive="active">Home</a>
-      </li>
+    <!-- Hamburger Button -->
+    <button
+      class="menu-toggle"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen"
+      aria-label="Toggle navigation">
 
-      <li>
-        <a routerLink="/products" routerLinkActive="active">Shop</a>
-      </li>
+      <span [class.active]="isMenuOpen"></span>
+      <span [class.active]="isMenuOpen"></span>
+      <span [class.active]="isMenuOpen"></span>
 
-      <li>
-        <a routerLink="/categories" routerLinkActive="active">Categories</a>
-      </li>
-
-      <li>
-        <a routerLink="/brands" routerLinkActive="active">Brands</a>
-      </li>
-    </ul>
-
-    <!-- Search -->
-    <div class="search-box">
-      <i class="fa-solid fa-magnifying-glass"></i>
-
-      <input
-        type="text"
-        placeholder="Search products..."
-      />
-    </div>
-
-    <!-- Actions -->
-    <div class="actions">
-
-  <!-- Wishlist -->
-  <a routerLink="/wish-list">
-    <i class="fa-regular fa-heart"></i>
-  </a>
-
-  <!-- Cart -->
-  <a routerLink="/cart" class="cart">
-    <i class="fa-solid fa-bag-shopping"></i>
-    <!-- <span>2</span> -->
-  </a>
-
-  <!-- Language -->
-  <!-- <div class="language-dropdown">
-
-    <button class="language-btn">
-      <i class="fa-solid fa-globe"></i>
-      <i class="fa-solid fa-chevron-down"></i>
     </button>
 
-    <div class="dropdown-menu">
+    <!-- Navigation Drawer -->
+    <div class="nav-drawer" [class.open]="isMenuOpen">
 
-      <button (click)="changlang('en')">
-        🇺🇸 English
-      </button>
+      <!-- Navigation Links -->
+      <ul class="nav-links">
 
-      <button (click)="changlang('ar')">
-        🇪🇬 العربية
-      </button>
+        <li>
+          <a routerLink="/home"
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{exact: true}"
+             (click)="closeMenu()">
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/products"
+             routerLinkActive="active"
+             (click)="closeMenu()">
+            Shop
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/categories"
+             routerLinkActive="active"
+             (click)="closeMenu()">
+            Categories
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/brands"
+             routerLinkActive="active"
+             (click)="closeMenu()">
+            Brands
+          </a>
+        </li>
+
+      </ul>
+
+      <!-- Search -->
+      <div class="search-box">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+          type="text"
+          placeholder="Search products..."
+        />
+
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+
+        <!-- Wishlist -->
+        <a
+          routerLink="/wish-list"
+          class="icon wishlist"
+          aria-label="Wishlist"
+          (click)="closeMenu()">
+
+          <i class="fa-regular fa-heart"></i>
+
+        </a>
+
+        <!-- Cart -->
+        <a
+          routerLink="/cart"
+          class="icon cart"
+          aria-label="Shopping Cart"
+          (click)="closeMenu()">
+
+          <i class="fa-solid fa-bag-shopping"></i>
+
+        </a>
+
+        <!-- Login / Logout -->
+        @if(islogin) {
+
+          <button
+            class="logout"
+            type="button"
+            (click)="_auth.logOut(); closeMenu()">
+
+            {{'LogOut' | translate}}
+
+          </button>
+
+        }
+
+        @else {
+
+          <a
+            routerLink="/login"
+            class="login"
+            (click)="closeMenu()">
+
+            {{'Login' | translate}}
+
+          </a>
+
+        }
+
+      </div>
 
     </div>
-
-  </div> -->
-
-  @if(islogin){
-
- 
-
-  <button class="logout" (click)="_auth.logOut()">
-    {{'LogOut'|translate}}
-  </button>
-
-  }
-
-  @else {
-
-  <a routerLink="/login" class="login">
-    {{'Login'|translate}}
-  </a>
-
-  }
-
-</div>
 
   </div>
 
-</nav>   
+</nav>
+
+<!-- Overlay -->
+@if(isMenuOpen) {
+  <div
+    class="menu-overlay"
+    (click)="closeMenu()">
+  </div>
+}

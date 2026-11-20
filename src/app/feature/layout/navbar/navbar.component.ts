@@ -29,6 +29,19 @@ export class NavbarComponent implements OnInit {
     this.translate.changeDiection()
 
   }
+
+
+
+isMenuOpen = false;
+
+toggleMenu(): void {
+  this.isMenuOpen = !this.isMenuOpen;
+}
+
+closeMenu(): void {
+  this.isMenuOpen = false;
+}
+
   ngOnInit(): void {
     this.flowbiteService.loadFlowbite(flowbite => {
       // Your custom code here
